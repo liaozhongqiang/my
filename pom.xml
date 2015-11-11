@@ -205,6 +205,15 @@
 			<version>1.9.0</version>
 		</dependency>
 		<!-- jackson end -->
+
+		<!-- slf4j start -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.2</version>
+		</dependency>
+		<!-- slf4j end -->
+
 	</dependencies>
 	<build>
 		<finalName>myweb</finalName>
