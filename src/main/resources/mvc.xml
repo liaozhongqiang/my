@@ -10,55 +10,35 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
-	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
-        <property name="contentNegotiationManager" ref="cnManager"/>
-        <property name="viewResolvers">
-        	<list>
-			    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-			        <property name="prefix" value="/WEB-INF/"/>
-			        <property name="suffix" value=".jsp"/>
-			    </bean>
-			    <bean class="org.springframework.web.servlet.view.BeanNameViewResolver"/>
-        	</list>
-        </property>
-        <property name="defaultViews">  
-            <list>  
-                <bean class="org.springframework.web.servlet.view.json.MappingJackson2JsonView" />  
-            </list>  
-        </property>
-    </bean>
-    
-    <!-- 直接返回string 编码问题 -->
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">  
-        <property name="cacheSeconds" value="0" ></property>  
-        <property name="messageConverters">  
-             <list> 
-                 <bean class = "org.springframework.http.converter.StringHttpMessageConverter">  
-                    <property name = "supportedMediaTypes">  
-                          <list>  
-                              <value>text/plain;charset=UTF-8</value>
-                          </list>
-                    </property>
-                 </bean>
-                 <bean class = "org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />  
-            </list>
-        </property>
-    </bean> 
-    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" /> 
-    <bean id="cnManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
-        <property name="favorPathExtension" value="true"/>
-        <property name="ignoreAcceptHeader" value="true"/>
-        <property name="defaultContentType" value="text/html"/>
-        <property name="mediaTypes">
-            <map>
-                <entry key="html" value="text/html" />
-                <entry key="xml" value="application/xml" />
-                <entry key="atom" value="application/atom+xml" />
-            </map>
-        </property>
-    </bean>
+	<!--默认注解映射支持  -->
+	<mvc:annotation-driven/>
+	<!-- 扫描Action类 -->
+	<context:component-scan base-package="com.my.action" />
 	
-	<context:component-scan base-package="com.*.action" />
-    <mvc:annotation-driven/>
-	<mvc:view-controller path="/" view-name="index" />
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	<bean
+		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+		<property name="cacheSeconds" value="0"></property>
+		<property name="messageConverters">
+			<list>
+				<bean
+					class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<list>
+							<value>text/plain;charset=UTF-8</value>
+						</list>
+					</property>
+				</bean>
+				<bean
+					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+			</list>
+		</property>
+	</bean>
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+		p:prefix="/WEB-INF/" p:suffix=".jsp" />
+	<mvc:interceptors>
+		<bean class="com.my.intercptor.MyIntercptor"></bean>
+	</mvc:interceptors>
 </beans>
