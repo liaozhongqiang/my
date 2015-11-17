@@ -5,7 +5,16 @@
 	version="3.0">
 	<display-name>myweb</display-name>
 	<description>myweb1.0</description>
-	<!--spring mvc  -->  
+
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-*.xml</param-value>
+	</context-param>
+
+	<!--spring mvc -->
 	<servlet>
 		<servlet-name>myweb</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -19,6 +28,17 @@
 		<servlet-name>myweb</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	<!-- druid -->
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/druid/*</url-pattern>
+	</servlet-mapping>
+
 	<filter>
 		<filter-name>httpMethodFilter</filter-name>
 		<filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
@@ -27,8 +47,8 @@
 		<filter-name>httpMethodFilter</filter-name>
 		<servlet-name>MyTest</servlet-name>
 	</filter-mapping>
-	
-	
+
+
 	<!-- 编码 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
@@ -46,7 +66,7 @@
 		<filter-name>encodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
-	
+
 	<session-config>
 		<session-timeout>480</session-timeout>
 		<tracking-mode>COOKIE</tracking-mode>

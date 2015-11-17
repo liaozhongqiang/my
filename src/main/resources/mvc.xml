@@ -38,7 +38,8 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/" p:suffix=".jsp" />
-	<mvc:interceptors>
+	<!-- 拦截器 -->
+	<!-- <mvc:interceptors>
 		<bean class="com.my.intercptor.MyIntercptor"></bean>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 </beans>
