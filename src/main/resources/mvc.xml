@@ -14,14 +14,17 @@
 	<mvc:annotation-driven/>
 	<!-- 扫描Action类 -->
 	<context:component-scan base-package="com.my.action" />
-	
+	<!-- handlerMapping -->
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" />
+	
+	<!-- handlerAdapter -->
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
 		<property name="cacheSeconds" value="0"></property>
 		<property name="messageConverters">
 			<list>
+				<!-- 处理@ResponseBody 直接返回string，中文乱码问题，因StringHttpMessageConverter 默认的是ISO-8859-1 -->
 				<bean
 					class="org.springframework.http.converter.StringHttpMessageConverter">
 					<property name="supportedMediaTypes">
@@ -30,6 +33,7 @@
 						</list>
 					</property>
 				</bean>
+				<!-- json处理类 -->
 				<bean
 					class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
 			</list>
@@ -38,6 +42,12 @@
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
 		p:prefix="/WEB-INF/" p:suffix=".jsp" />
+	
+	<!-- 文件上传拦截类 -->	
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="31457280"></property>
+		<property name="resolveLazily" value="true"></property>
+	</bean>
 	<!-- 拦截器 -->
 	<!-- <mvc:interceptors>
 		<bean class="com.my.intercptor.MyIntercptor"></bean>
