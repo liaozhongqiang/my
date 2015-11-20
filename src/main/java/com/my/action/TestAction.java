@@ -8,7 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.my.entity.TestEntity;
+
+
 
 @Controller
 @RequestMapping("test")
@@ -18,10 +19,8 @@ public class TestAction {
 
 	@RequestMapping("sayHello")
 	@ResponseBody
-	public TestEntity sayHello() {
-		logger.info("≤‚ ‘INFO»’÷æ£°£°£°");
-		TestEntity test = new TestEntity("111", "222");
-		return test;
+	public String sayHello() {
+		return "Êó•Âì¶";
 	}
 
 	@RequestMapping("testdo.do")
@@ -32,7 +31,7 @@ public class TestAction {
 	@RequestMapping("rest1/{id}")
 	@ResponseBody
 	public String rest1(@PathVariable String id) {
-		return id + "∂∫ƒ„ÕÊ£°";
+		return id + "";
 	}
 
 	@RequestMapping("rest2/{val1}/{val2}")
@@ -45,4 +44,17 @@ public class TestAction {
 	public ModelAndView view() {
 		return new ModelAndView("/page/index");
 	}
+	
+	@RequestMapping("testResource")
+	@ResponseBody
+	public String testResource(){
+		return "xxxx";
+	}
+	
+	@RequestMapping("/testHttp")
+	@ResponseBody
+	public String testHttp(String id,String name){
+		return id+name;
+	}
+	
 }

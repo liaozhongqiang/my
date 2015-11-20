@@ -5,9 +5,9 @@ import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 
 /**
- * »ù´¡¹¤¾ßÀà
+ * 
  * @author liaozq
- * @DATE 2015Äê11ÔÂ18ÈÕ
+ * @DATE 2015å¹´11æœˆ19æ—¥
  */
 public class BaseUtil {
 	public static Resource getResource(String path) {

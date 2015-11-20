@@ -7,10 +7,9 @@ import java.io.InputStreamReader;
 import org.apache.commons.lang3.SystemUtils;
 
 /**
- * Ö´ĞĞÃüÁîĞĞ¹¤¾ß
  * 
  * @author liaozq
- * @DATE 2015Äê11ÔÂ18ÈÕ
+ * @DATE 2015å¹´11æœˆ19æ—¥
  */
 public class CMDUtil {
 	public static String callCmd(String cmd) throws Exception {
@@ -26,11 +25,11 @@ public class CMDUtil {
 			} else if (SystemUtils.IS_OS_WINDOWS) {
 				process = Runtime.getRuntime().exec(cmd);
 			}
-			// »ñÈ¡ÊäÈëÁ÷
+			// ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			is = process.getInputStream();
-			// ÓÃÒ»¸ö¶ÁÊä³öÁ÷ÀàÈ¥¶Á
+			// ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¥ï¿½ï¿½
 			isr = new InputStreamReader(is);
-			// ÓÃ»º³åÆ÷¶ÁĞĞ
+			// ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 			br = new BufferedReader(isr);
 			String line = null;
 			while ((line = br.readLine()) != null) {

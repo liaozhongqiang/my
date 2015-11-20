@@ -4,10 +4,9 @@ package com.my.core.spring;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 
 /**
- * ¶àÊı¾İÔ´ÊµÏÖÀà   BUG ±ØĞëÔÚÊÂÎñ¿ªÆôÖ®Ç°½øĞĞÊı¾İÔ´ÇĞ»»£¬ÈôÊÂÎñ¿ªÆôºó£¬ÔòÎŞ·¨ÇĞ»»¡£ service²Ù×÷Íêºó£¬±ØĞëÔÚµ÷ÓÃDBContextHolder.clear()·½·¨
- * ÒòÎªÔÚweb»·¾³ÏÂÊÇÊ¹ÓÃÏß³Ì³ØµÄ£¬ºóÃæ½øÀ´µÄÇëÇó¿ÉÄÜÄÃµ½Ö®Ç°ÒÑ¾­½áÊøµÄÇëÇóµÄÏß³Ì¡£µ¼ÖÂÄ¬ÈÏÊı¾İÔ´ÎŞ·¨ÉúĞ§.
+ * BUG è°ƒç”¨åˆ‡æ¢æ•°æ®æºå¿…é¡»åœ¨å¼€å¯äº‹ç‰©ä¹‹å‰ï¼Œè°ƒç”¨å®Œåˆ‡æ¢æ•°æ®æºï¼Œæœ€å¥½æ¸…é™¤ã€‚
  * @author liaozq
- * @DATE 2015Äê11ÔÂ17ÈÕ
+ * @DATE 2015å¹´11æœˆ19æ—¥
  */
 public class DynamicDataSource extends AbstractRoutingDataSource{
 	@Override

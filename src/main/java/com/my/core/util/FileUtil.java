@@ -12,16 +12,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
- * ÎÄ¼þ¹¤¾ßÀà
  * 
  * @author liaozq
- * @DATE 2015Äê11ÔÂ18ÈÕ
+ * @DATE 2015å¹´11æœˆ19æ—¥
  */
 public class FileUtil {
 
 	private static Map<String, String> uploadConfig = new HashMap<String, String>();
 	
-	// ³õÊ¼»¯config
+	// ï¿½ï¿½Ê¼ï¿½ï¿½config
 	static{
 		SAXReader saxReader = new SAXReader();
 		try {
@@ -37,13 +36,9 @@ public class FileUtil {
 	public static void uploadFile(MultipartFile multipartFile) throws Exception {
 		String filePath=uploadConfig.get("basepath")+"/"+DateUtil.getNow("yyyy-MM-dd")+"/"+multipartFile.getOriginalFilename();
 		File file=null;
-		switch (uploadConfig.get("type")) {
-		case "local":
+		if ("local".equals(uploadConfig.get("type"))) {
 			file=new File(filePath);
 			FileUtils.copyInputStreamToFile(multipartFile.getInputStream(), file);
-			break;
-		default:
-			break;
 		}
 	}
 	

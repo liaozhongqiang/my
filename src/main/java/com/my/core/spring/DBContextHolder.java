@@ -1,9 +1,9 @@
 package com.my.core.spring;
 
 /**
- * Îªµ±Ç°Ïß³Ì°ó¶¨Êý¾ÝÔ´
+ * 
  * @author liaozq
- * @DATE 2015Äê11ÔÂ17ÈÕ
+ * @DATE 2015å¹´11æœˆ19æ—¥
  */
 public class DBContextHolder {
 	

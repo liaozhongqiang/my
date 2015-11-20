@@ -9,9 +9,9 @@ import java.util.Date;
 import com.sun.tools.extcheck.Main;
 
 /**
- * ÈÕÆÚ¹¤¾ß
+ * 
  * @author liaozq
- * @DATE 2015Äê11ÔÂ18ÈÕ
+ * @DATE 2015å¹´11æœˆ19æ—¥
  */
 public class DateUtil {
 	

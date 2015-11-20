@@ -5,16 +5,15 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
 /**
- * »ñÈ¡spring ÉÏÏÂÎÄ¶ÔÏó
+ * 
  * @author liaozq
- * @DATE 2015Äê11ÔÂ19ÈÕ
+ * @DATE 2015å¹´11æœˆ19æ—¥
  */
 public class SpringApplicationUtil implements ApplicationContextAware{
 	
 	private static ApplicationContext applicationContext;
 
 	@SuppressWarnings("static-access")
-	@Override
 	public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
 		this.applicationContext=applicationContext;
 	}

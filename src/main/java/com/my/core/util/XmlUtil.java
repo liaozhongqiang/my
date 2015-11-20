@@ -8,9 +8,8 @@ import org.dom4j.Document;
 import org.dom4j.Element;
 
 public class XmlUtil {
-	
 	/**
-	 * 此方法只支持只有一级元素的xml
+	 * 
 	 * @param document
 	 * @return
 	 */
