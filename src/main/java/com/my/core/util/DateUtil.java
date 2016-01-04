@@ -6,12 +6,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.sun.tools.extcheck.Main;
 
 /**
  * 
  * @author liaozq
- * @DATE 2015年11月19日
+ * @DATE 2015骞�11鏈�19鏃�
  */
 public class DateUtil {
 	
