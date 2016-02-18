@@ -9,7 +9,6 @@ import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
 import java.util.Set;
 
-import org.apache.commons.lang3.ArrayUtils;
 
 public class Server {
 
@@ -48,7 +47,7 @@ class Worker {
 	}
 
 	public void run() {
-		ByteBuffer head = ByteBuffer.allocate(1024);
+		ByteBuffer head = ByteBuffer.allocate(4);
 
 		try {
 			int read = socketChannel.read(head);
@@ -57,11 +56,11 @@ class Worker {
 				socketChannel.close();
 				System.out.println("客户端已经关闭");
 			}
-			//int palength = ByteUtils.byteToInt(head.array(), 0);
-			//int bodylength = palength - 4;
-			//ByteBuffer body = ByteBuffer.allocate(bodylength);
-			int read2 = socketChannel.read(head);
-			System.out.println("服务端接收的数据：" + new String(head.array(),0,read));
+			int palength = ByteUtils.byteToInt(head.array(), 0);
+			int bodylength = palength - 4;
+			ByteBuffer body = ByteBuffer.allocate(bodylength);
+			int read2 = socketChannel.read(body);
+			System.out.println("服务端接收的数据：" + new String(body.array(),0,read2));
 			// buf.clear();
 			// buf.put("1111111".getBytes());
 			// buf.flip();

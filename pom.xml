@@ -7,7 +7,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>myweb Maven Webapp</name>
 	<url>http://www.liaozhongqiang.com</url>
-	
+
 	<licenses>
 		<license>
 			<name>Apache 2</name>
@@ -16,12 +16,12 @@
 			<comments>A business-friendly OSS license</comments>
 		</license>
 	</licenses>
-	
+
 	<organization>
 		<name>liaozhongqiang</name>
 		<url>http://www.liaozhongqiang.com</url>
 	</organization>
-	
+
 	<developers>
 		<developer>
 			<id>lzq</id>
@@ -35,7 +35,7 @@
 			</roles>
 		</developer>
 	</developers>
-	
+
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -156,7 +156,7 @@
 			<scope>compile</scope>
 		</dependency>
 		<!-- spring end -->
-	
+
 		<!-- servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -205,6 +205,11 @@
 			<version>4.5.1</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<version>4.5.1</version>
+		</dependency>
 
 		<!-- apache commons end -->
 
@@ -251,10 +256,22 @@
 
 		<!-- slf4j start -->
 		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.2</version>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+			<version>2.5</version>
 		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-slf4j-impl</artifactId>
+			<version>2.5</version>
+		</dependency>
+		<!-- <dependency> <groupId>org.slf4j</groupId> <artifactId>slf4j-log4j12</artifactId> 
+			<version>1.7.2</version> </dependency> -->
 		<!-- slf4j end -->
 
 		<!-- mybatis start -->
@@ -328,6 +345,20 @@
 			<artifactId>shiro-spring</artifactId>
 			<version>1.2.4</version>
 		</dependency>
+
+		<!-- cglib 动态代理 -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib</artifactId>
+			<version>3.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.ow2.asm</groupId>
+			<artifactId>asm-util</artifactId>
+			<version>4.2</version>
+		</dependency>
+
+
 
 	</dependencies>
 	<build>

@@ -1,5 +1,6 @@
 package com.my.dao;
 
+
 import com.my.entity.User;
 
 public interface IUserDao {

@@ -40,7 +40,7 @@ public class Client {
 										int packageleght=4+str.getBytes().length;
 										byte[] packag=ArrayUtils.addAll(ByteUtils.intToByte(packageleght), str.getBytes());
 										buf.clear();
-										buf.put(str.getBytes());
+										buf.put(packag);
 										System.out.println("客户端发送的数据是："+str);
 										buf.flip();
 										client.write(buf);
