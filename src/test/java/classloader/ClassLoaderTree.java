@@ -9,5 +9,10 @@ public class ClassLoaderTree {
 			classLoader=classLoader.getParent();
 		}
 	}
+	
+	
+	public static void test1(){
+		System.out.println("hello class");
+	}
 
 }

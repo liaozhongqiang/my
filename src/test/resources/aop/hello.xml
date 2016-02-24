@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  xmlns="http://www.springframework.org/schema/beans"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:aop="http://www.springframework.org/schema/aop"  
+        xsi:schemaLocation="  
+           http://www.springframework.org/schema/beans  	
+           http://www.springframework.org/schema/beans/spring-beans.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop.xsd">  
+        <bean id="hello" class="spring.aop.advice.Hello"></bean> 
+        <bean id="helloaspect" class="spring.aop.aspect.HelloAspect"></bean>
+        <aop:config>
+        	<aop:pointcut expression="execution(* spring.aop.advice..*.sayHello(..)) and args(params)" id="pointcut"/>
+        	<aop:aspect ref="helloaspect">
+        		<aop:before pointcut-ref="pointcut" method="beforeAdvice(java.lang.String)" arg-names="params"/>
+        		<aop:after pointcut-ref="pointcut" method="afterAdvice(java.lang.String)" arg-names="params"/>
+        	</aop:aspect>
+        </aop:config>
+</beans> 

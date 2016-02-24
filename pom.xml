@@ -357,6 +357,12 @@
 			<artifactId>asm-util</artifactId>
 			<version>4.2</version>
 		</dependency>
+		<!-- excel poi -->
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.13</version>
+		</dependency>
 
 
 

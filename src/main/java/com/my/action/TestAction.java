@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.my.core.spring.SpringApplicationUtil;
+import com.my.dao.IUserDao;
+import com.my.service.IUserService;
 
 
 
@@ -60,7 +62,7 @@ public class TestAction {
 	@RequestMapping("testResource")
 	@ResponseBody
 	public String testResource(){
-		SpringApplicationUtil.getBeanById("userDaoImpl");
+		IUserDao ius=(IUserDao) SpringApplicationUtil.getBeanById("userDaoImpl");
 		return "xxxx";
 	}
 	

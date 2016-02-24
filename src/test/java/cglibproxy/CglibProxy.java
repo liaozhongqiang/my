@@ -12,6 +12,7 @@ public class CglibProxy implements MethodInterceptor{
 		Object result=null;
 		System.out.println("proxy doSomething");
 		result=proxy.invokeSuper(obj1, args);
+		System.out.println("proxy doSomething");
 		return result;
 	}
 
