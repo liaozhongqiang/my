@@ -25,6 +25,7 @@ import org.apache.http.util.EntityUtils;
  * @author liaozq
  * @DATE 2015年11月20日
  */
+@Deprecated
 public class HttpUtil {
 	
 	/**

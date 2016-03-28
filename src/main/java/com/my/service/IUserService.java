@@ -6,6 +6,6 @@ public interface IUserService {
 	
 	public User findById(String id);
 	
-	public void testRouteDataSource();
+	public void testRouteDataSource() throws Exception;
 
 }

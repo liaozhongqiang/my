@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  xmlns="http://www.springframework.org/schema/beans"  
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+        xmlns:aop="http://www.springframework.org/schema/aop"  
+        xsi:schemaLocation="  
+           http://www.springframework.org/schema/beans  	
+           http://www.springframework.org/schema/beans/spring-beans.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop.xsd"> 
+        <bean id="afterReturn" class="spring.aop.advice.AfterTurnTest"></bean>
+        <bean id="afterReturnAspect" class="spring.aop.aspect.AfterReturnAspect"></bean>
+        <aop:config>
+        	<aop:aspect ref="afterReturnAspect">			
+        		<aop:before method="beforeAdvice" pointcut="execution(* spring.aop.advice..*.*(..))"/>
+        		<aop:after-returning method="afterLReturn" pointcut="execution(* spring.aop.advice..*.afterReturn(..)) and args(params)" arg-names="params,result"  returning="result"/>
+        	</aop:aspect>
+        </aop:config>
+</beans>

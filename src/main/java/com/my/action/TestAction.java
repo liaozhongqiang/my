@@ -1,23 +1,23 @@
 package com.my.action;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+import javax.validation.Valid;
 
-import javax.servlet.http.HttpServletRequest;
-
-import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.my.core.spring.Decryption;
+import com.my.core.spring.MyException;
 import com.my.core.spring.SpringApplicationUtil;
-import com.my.dao.IUserDao;
+import com.my.entity.PhoneNumber;
+import com.my.entity.User;
 import com.my.service.IUserService;
 
 
@@ -29,6 +29,9 @@ import com.my.service.IUserService;
 public class TestAction {
 
 	private static Logger logger=LoggerFactory.getLogger(TestAction.class);
+	
+	@Autowired
+	private IUserService userServiceImpl;
 
 	@RequestMapping("sayHello")
 	@ResponseBody
@@ -62,16 +65,54 @@ public class TestAction {
 	@RequestMapping("testResource")
 	@ResponseBody
 	public String testResource(){
-		IUserDao ius=(IUserDao) SpringApplicationUtil.getBeanById("userDaoImpl");
+		System.out.println(SpringApplicationUtil.getApplicationContext().getBean("userServiceImpl"));
 		return "xxxx";
 	}
 	
 	@RequestMapping("/testHttp")
 	@ResponseBody
-	public String testHttp(HttpServletRequest req,String id,String name) throws Exception{
-		System.out.println(req.getParameter("id"));
-		System.out.println(req.getParameter("name"));
+	public String testHttp(String id,String name){
+		System.out.println(id+"----"+name);
 		return id+name;
+	}
+	
+	@RequestMapping("/testConversion")
+	@ResponseBody
+	public String testConversion(@RequestParam(name="phone") PhoneNumber phone){
+		return phone.toString();
+	}
+	
+	@RequestMapping("/testValidator")
+	@ResponseBody
+	public PhoneNumber testValidator(@Valid PhoneNumber phone){
+		return phone;
+	}
+	
+	@RequestMapping("/testMessageResolver")
+	@ResponseBody
+	public PhoneNumber testMessageResolver(){
+		PhoneNumber phone=new PhoneNumber();
+		phone.setAreaCode("010");
+		phone.setPhoneNumber("1234567");
+		return phone;
+	}
+	
+	@RequestMapping("/testForward")
+	public String testForward(){
+		return "forward:/test/testMessageResolver";
+	}
+	
+	@RequestMapping("/testMyException")
+	@ResponseBody
+	public String testMyException(){
+		throw new MyException("");
+	}
+	
+	
+	@RequestMapping("/testDecrypt")
+	@ResponseBody
+	public User testDecrypt(@RequestBody User user){
+		return user;
 	}
 	
 }

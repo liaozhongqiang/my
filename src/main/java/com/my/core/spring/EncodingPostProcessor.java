@@ -9,6 +9,8 @@ import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.StringHttpMessageConverter;
+import org.springframework.stereotype.Component;
+import org.springframework.web.servlet.mvc.method.annotation.ExceptionHandlerExceptionResolver;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
 
 /**
@@ -16,6 +18,7 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
  * @author liaozq
  * @DATE 2015年11月20日
  */
+@Component
 public class EncodingPostProcessor implements BeanPostProcessor{
 
 	@Override
@@ -24,8 +27,18 @@ public class EncodingPostProcessor implements BeanPostProcessor{
 			List<HttpMessageConverter<?>> convs=((RequestMappingHandlerAdapter)bean).getMessageConverters();
 			for(HttpMessageConverter<?> conv:convs){
 				if(conv instanceof StringHttpMessageConverter){
-					((StringHttpMessageConverter)conv).setSupportedMediaTypes( Arrays.asList(new MediaType("text", "html", 
-                            Charset.forName("UTF-8"))));
+					((StringHttpMessageConverter)conv).setSupportedMediaTypes( Arrays.asList(new MediaType("text", "plain", 
+                            Charset.forName("UTF-8")),MediaType.ALL));
+				}
+			}
+		}
+		
+		if(bean instanceof ExceptionHandlerExceptionResolver){
+			List<HttpMessageConverter<?>> convs=((ExceptionHandlerExceptionResolver) bean).getMessageConverters();
+			for(HttpMessageConverter<?> conv:convs){
+				if(conv instanceof StringHttpMessageConverter){
+					((StringHttpMessageConverter)conv).setSupportedMediaTypes( Arrays.asList(new MediaType("text", "plain", 
+                            Charset.forName("UTF-8")),MediaType.ALL));
 				}
 			}
 		}

@@ -1,14 +1,19 @@
 package com.my.service.impl;
 
+import java.io.FileOutputStream;
+import java.io.OutputStream;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.my.dao.IUserDao;
 import com.my.entity.User;
 import com.my.service.IUserService;
 
-@Service
+@Component
 public class UserServiceImpl implements IUserService {
 
 	@Autowired
@@ -19,14 +24,17 @@ public class UserServiceImpl implements IUserService {
 	}
 	
 	@Transactional
-	public void testRouteDataSource() {
+	public void testRouteDataSource() throws Exception {
 		//DBContextHolder.setDBSource("dataSourceone");
 		// System.out.println(userDaoImpl.findById("1"));
-		User user = new User("17", " ˝æ›‘¥≤‚ ‘1");
+		User user = new User("30", "ÊàëÊì¶Ê¥óÊì¶Ê¥ó");
 		userDaoImpl.saveUser(user);
+		OutputStream os=new FileOutputStream("E:\\jd-gui\\jd-gui-windows-1.4.0.111.34.5.6\\jd-gui.xls");
+		os.write("xx".getBytes());
+		os.close();
 		//DBContextHolder.setDBSource("dataSourcetwo");
 		// System.out.println(userDaoImpl.findById("2"));
-		User user2 = new User("18", " ˝æ›‘¥≤‚ ‘1");
-		userDaoImpl.saveUser(user2);
+		//User user2 = new User("17", "ÂÅ∂Êó•Âì¶");
+		//userDaoImpl.saveUser(user2);
 	}
 }

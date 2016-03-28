@@ -10,25 +10,55 @@
 	http://www.springframework.org/schema/beans/spring-beans.xsd
 	http://www.springframework.org/schema/context
 	http://www.springframework.org/schema/context/spring-context.xsd">
-	<!--默认注解映射支持  -->
-	<mvc:annotation-driven/>
+
+	<!--注册默认的bean handlerMapping handlerAdapter -->
+	<mvc:annotation-driven >
+	</mvc:annotation-driven>
+
+	<!-- 类型转换 -->
+	<!-- <bean id="conversionService"
+		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<bean class="com.my.core.spring.conversion.StringToPhoneNumberConversion"></bean>
+			</set>
+		</property>
+	</bean> -->
+
+	<!-- <bean id="handlerExceptionResolver"
+		class="com.my.core.spring.exceptionResolvers.MyHandlerExceptionResolver">
+	</bean> -->
+
+	<!-- <mvc:annotation-driven content-negotiation-manager="" conversion-service="" 
+		message-codes-resolver="" validator=""> <mvc:argument-resolvers ></mvc:argument-resolvers> 
+		<mvc:async-support></mvc:async-support> <mvc:return-value-handlers></mvc:return-value-handlers> 
+		<mvc:path-matching/> </mvc:annotation-driven> -->
+
 	<!-- 扫描Action类 -->
 	<context:component-scan base-package="com.my.action" />
 	
-	<!-- 处理@Responsebody 直接返回string 中文乱码问题 -->
-	<bean class="com.my.core.spring.EncodingPostProcessor"/>
 	
+	<context:component-scan base-package="com.my.core.spring"/>
+
+
+
+	<bean id="/simpletest" class="com.my.action.SimpleControllerTest" />
+
 	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver"
-		p:prefix="/WEB-INF/" p:suffix=".jsp" />
-	
-	<!-- 文件上传拦截类 -->	
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+	<!-- 文件上传拦截类 -->
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="31457280"></property>
 		<property name="resolveLazily" value="true"></property>
 	</bean>
 	<!-- 拦截器 -->
-	<!-- <mvc:interceptors>
-		<bean class="com.my.intercptor.MyIntercptor"></bean>
-	</mvc:interceptors> -->
+	<!-- <mvc:interceptors> <bean class="com.my.intercptor.MyIntercptor"></bean> 
+		</mvc:interceptors> -->
+
+	
 </beans>

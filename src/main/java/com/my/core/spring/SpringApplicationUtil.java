@@ -3,7 +3,7 @@ package com.my.core.spring;
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
-import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 
 /**
  * 
@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
  * @DATE 2015年11月19日
  */
 
+@Component
 public class SpringApplicationUtil implements ApplicationContextAware{
 	
 	private static ApplicationContext applicationContext;
@@ -23,9 +24,4 @@ public class SpringApplicationUtil implements ApplicationContextAware{
 	public static ApplicationContext getApplicationContext(){
 		return applicationContext;
 	}
-	
-	public static Object getBeanById(String beanId){
-		return	applicationContext.getBean(beanId);
-	}
-
 }

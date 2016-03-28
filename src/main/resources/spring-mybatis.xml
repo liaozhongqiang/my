@@ -71,8 +71,8 @@ http://www.springframework.org/schema/aop/spring-aop.xsd">
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" /><!-- 数据源 -->
 		<property name="mapperLocations" value="classpath:com/my/dao/mapper/*.xml" /><!--mapper -->
-		<property name="typeAliasesPackage" value="com.my.entity" /><!-- 
-			mapper resultType entity 别名 -->
+		<property name="typeAliasesPackage" value="com.my.entity" />
+		<property name="configLocation" value="classpath:mybatis.xml"></property>
 	</bean>
 
 	<!-- 配置druid监控spring jdbc -->

@@ -40,6 +40,7 @@ import com.mysql.jdbc.Buffer;
  * @DATE 2015年11月20日
  */
 @SuppressWarnings("deprecation")
+@Deprecated
 public class HttpsUtil {
 	
 	 public static CloseableHttpClient createSSLClientDefault() {

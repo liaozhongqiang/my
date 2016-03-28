@@ -8,7 +8,9 @@
            http://www.springframework.org/schema/aop  
            http://www.springframework.org/schema/aop/spring-aop.xsd">  
         <bean id="hello" class="spring.aop.advice.Hello"></bean> 
+        
         <bean id="helloaspect" class="spring.aop.aspect.HelloAspect"></bean>
+        
         <aop:config>
         	<aop:pointcut expression="execution(* spring.aop.advice..*.sayHello(..)) and args(params)" id="pointcut"/>
         	<aop:aspect ref="helloaspect">
