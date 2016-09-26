@@ -29,12 +29,17 @@ public class UserServiceImpl implements IUserService {
 		// System.out.println(userDaoImpl.findById("1"));
 		User user = new User("30", "我擦洗擦洗");
 		userDaoImpl.saveUser(user);
-		OutputStream os=new FileOutputStream("E:\\jd-gui\\jd-gui-windows-1.4.0.111.34.5.6\\jd-gui.xls");
-		os.write("xx".getBytes());
-		os.close();
+		//OutputStream os=new FileOutputStream("E:\\jd-gui\\jd-gui-windows-1.4.0.111.34.5.6\\jd-gui.xls");
+		//os.write("xx".getBytes());
+		//os.close();
 		//DBContextHolder.setDBSource("dataSourcetwo");
 		// System.out.println(userDaoImpl.findById("2"));
 		//User user2 = new User("17", "偶日哦");
 		//userDaoImpl.saveUser(user2);
+	}
+	
+	@Transactional
+	public User saveUser(User user){
+		return	userDaoImpl.saveUser(user);
 	}
 }

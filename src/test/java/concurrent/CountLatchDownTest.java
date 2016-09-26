@@ -1,8 +1,6 @@
 package concurrent;
 
-import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.CyclicBarrier;
 import java.util.concurrent.TimeUnit;
 
 public class CountLatchDownTest {
@@ -15,8 +13,8 @@ public class CountLatchDownTest {
 		new Thread(new Worker(countDownLatch, 10)).start();
 		new Thread(new Worker(countDownLatch, 5)).start();
 		try {
-			//countDownLatch.await();
-			countDownLatch.await(5, TimeUnit.SECONDS);
+			countDownLatch.await();
+			//countDownLatch.await(5, TimeUnit.SECONDS);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}
@@ -45,6 +43,7 @@ public class CountLatchDownTest {
 				e.printStackTrace();
 			}
 			countDownLatch.countDown();
+			System.out.println("1111");
 		}
 	}
 

@@ -1,5 +1,6 @@
 package wrapperClass;
 
+
 public class Test {
 	
 	public static void main(String[] args) {
@@ -13,6 +14,7 @@ public class Test {
 		System.out.println(s1==s2);
 		System.out.println(s1==s3);
 		System.out.println(s1==s6);
+		
 	}
 
 }

@@ -1,18 +1,30 @@
 package com.my.action;
 
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
+import com.google.common.collect.Lists;
 import com.my.core.spring.Decryption;
 import com.my.core.spring.MyException;
 import com.my.core.spring.SpringApplicationUtil;
@@ -22,8 +34,12 @@ import com.my.service.IUserService;
 
 
 
-
-
+/**
+ * 
+ * @author lzq
+ * @date 2016年3月28日
+ *
+ */
 @Controller
 @RequestMapping("test")
 public class TestAction {
@@ -111,8 +127,24 @@ public class TestAction {
 	
 	@RequestMapping("/testDecrypt")
 	@ResponseBody
-	public User testDecrypt(@RequestBody User user){
+	public User testDecrypt(@Decryption @RequestBody User user){
 		return user;
+	}
+	
+	@RequestMapping("/testDate")
+	@ResponseBody
+	public Map<String,Date> testDate(){
+		Map<String,Date> map=new HashMap<String,Date>(1);
+		map.put("date", new Date());
+		return map;
+	}
+	
+	@RequestMapping(value="/test22",method=RequestMethod.GET,headers="X-TOKEN=123444")
+	@ResponseBody
+	public ResponseEntity<String> test22(){
+		HttpHeaders header =new HttpHeaders();
+		header.add(HttpHeaders.CONTENT_TYPE, "application/json; charset=utf-8");
+		return new ResponseEntity<String>("{\"aa\":\"你好\"}",header, HttpStatus.OK);
 	}
 	
 }

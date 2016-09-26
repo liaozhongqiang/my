@@ -1,7 +1,14 @@
 package com.my.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5834843933403970466L;
+
 	private String id;
 	
 	private String name;

@@ -7,6 +7,6 @@ public interface IUserDao {
 	
 	public User findById(String id);
 	
-	public void saveUser(User user);
+	public User saveUser(User user);
 
 }

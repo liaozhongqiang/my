@@ -31,9 +31,10 @@ public class SemaphoreTest {
 				System.out.println("工人"+i+"使用一个机器");
 				Thread.sleep(5000);
 				System.out.println("工人"+i+"释放一个机器");
-				semaphore.release();
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			}finally {
+				semaphore.release();
 			}
 		}
 		

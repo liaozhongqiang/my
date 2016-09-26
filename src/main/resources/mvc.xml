@@ -12,18 +12,17 @@
 	http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!--注册默认的bean handlerMapping handlerAdapter -->
-	<mvc:annotation-driven >
-	</mvc:annotation-driven>
+	<mvc:annotation-driven conversion-service="conversionService"/>
 
 	<!-- 类型转换 -->
-	<!-- <bean id="conversionService"
+	<bean id="conversionService"
 		class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
 		<property name="converters">
 			<set>
 				<bean class="com.my.core.spring.conversion.StringToPhoneNumberConversion"></bean>
 			</set>
 		</property>
-	</bean> -->
+	</bean>
 
 	<!-- <bean id="handlerExceptionResolver"
 		class="com.my.core.spring.exceptionResolvers.MyHandlerExceptionResolver">
@@ -39,8 +38,6 @@
 	
 	
 	<context:component-scan base-package="com.my.core.spring"/>
-
-
 
 	<bean id="/simpletest" class="com.my.action.SimpleControllerTest" />
 

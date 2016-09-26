@@ -45,12 +45,13 @@ public class Test1 {
 		Set<String> linked=new LinkedHashSet<String>();
 		
 		for(int i=20;i>0;i--){
-			linked.add(""+i);
+			set.add(""+i);
 		}
 		
-		for(String a:linked){
-			System.out.println(a);
-		}
+		
+		set.remove(1);
+		
+		System.out.println(set.size());
 		
 		
 		List<String> list=new ArrayList<String>();
@@ -58,6 +59,10 @@ public class Test1 {
 		List<String> linkedList=new LinkedList<String>();
 		
 		List<String> list2=new TreeList();
+		
+		list2.remove(0);
+		
+		list2.remove("1");
 		
 	}
 }

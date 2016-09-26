@@ -7,5 +7,7 @@ public interface IUserService {
 	public User findById(String id);
 	
 	public void testRouteDataSource() throws Exception;
+	
+	public User saveUser(User user);
 
 }

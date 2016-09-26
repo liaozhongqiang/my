@@ -35,6 +35,7 @@ public class SpringMVCTest {
 	
 	@Before
 	public void init(){
+		System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
 		mockMvc=MockMvcBuilders.webAppContextSetup(wac).build();
 	}
 	

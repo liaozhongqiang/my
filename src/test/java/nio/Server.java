@@ -61,8 +61,13 @@ class Worker {
 			ByteBuffer body = ByteBuffer.allocate(bodylength);
 			int read2 = socketChannel.read(body);
 			System.out.println("服务端接收的数据：" + new String(body.array(),0,read2));
-			// buf.clear();
-			// buf.put("1111111".getBytes());
+			ByteBuffer send = ByteBuffer.allocate(1024);
+			send.put("11111".getBytes());
+			send.flip();
+			socketChannel.write(send);
+			socketChannel.register(selector, SelectionKey.OP_READ);
+			//buf.clear();
+			//buf.put("1111111".getBytes());
 			// buf.flip();
 			// socketChannel.write(buf);
 			// socketChannel.register(selector, SelectionKey.OP_READ);

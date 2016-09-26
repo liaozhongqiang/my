@@ -11,7 +11,7 @@ public class Question7 {
 		Question7Runnable q7r=new Question7Runnable();
 		new Thread(q7r).start();
 		while(q7r.isFlag()){
-			//System.out.println(11111);//去掉将是死循环
+			System.out.println(11111);//去掉将是死循环
 		}
 		System.out.println(q7r.isFlag());
 		
